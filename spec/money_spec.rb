@@ -37,4 +37,19 @@ describe Money do
     result = bank.reduced(Money.dollar(1), "USD")
     result.should == Money.dollar(1)
   end
+
+  it "rates of the same currency should be one" do
+    Bank.new.rate("USD", "USD").should == 1
+  end
+
+  it "adds multiple currency correctly" do
+    five_bucks = Money.dollar(5)
+    ten_francs = Money.franc(10)
+    bank = Bank.new
+    bank.add_rate("CHF", "USD", 2)
+    p bank.rates.hash
+    result =  bank.reduce(five_bucks.plus(ten_francs), "USD")
+    result.should == Money.dollar(10)
+  end
+    
 end
