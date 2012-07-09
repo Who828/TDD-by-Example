@@ -1,5 +1,4 @@
 require 'money'
-require 'franc'
 
 describe Money do
   it "equates the same objects correctly" do
@@ -19,7 +18,23 @@ describe Money do
     Money.franc(1).currency.should == "CHF"
   end
 
-  it "equates different classes correctly" do
-    Money.new(10, 'CHF').should == Franc.new(10, 'CHF')
+  it "returns a sum after peforming an addition" do
+    five = Money.dollar(5)
+    sum  = five.plus(five)
+    five.should == sum.augend
+    five.should == sum.addend
+  end 
+
+  it "performs addition for same currency" do
+    sum = Sum.new(Money.dollar(3), Money.dollar(4))
+    bank = Bank.new
+    result = bank.reduced(sum, "USD")
+    result.should == Money.dollar(7)
+  end
+
+  it "reduces money using the bank" do
+    bank = Bank.new
+    result = bank.reduced(Money.dollar(1), "USD")
+    result.should == Money.dollar(1)
   end
 end

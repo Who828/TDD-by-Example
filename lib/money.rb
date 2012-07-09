@@ -1,3 +1,6 @@
+require 'bank'
+require 'sum'
+
 class Money
   attr_reader :amount,:currency
   
@@ -21,5 +24,13 @@ class Money
 
   def self.franc(amount)
    Money.new(amount,"CHF")
+  end
+
+  def plus(added)
+    Sum.new(self, added)
+  end
+
+  def reduce(to)
+    self
   end
 end
