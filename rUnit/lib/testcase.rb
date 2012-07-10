@@ -17,17 +17,18 @@ class TestCase
     setup
     begin
       self.send(name)
-    rescue 
+    rescue Exception => ex
+      p ex
       result.test_failed
     end
     tear_down
   end
 
   def assert(arg)
-     arg == true
+    arg == true
   end
 
   def assert_not(arg)
-     arg != true
+    arg != true 
   end
 end
