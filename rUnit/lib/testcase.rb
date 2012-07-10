@@ -12,24 +12,22 @@ class TestCase
   def tear_down
   end
 
-  def run()
-    result = TestResult.new
+  def run(result)
     result.test_started
     setup
     begin
       self.send(name)
-    rescue Exception
+    rescue 
       result.test_failed
     end
     tear_down
-    result
   end
 
   def assert(arg)
-    p arg == true
+     arg == true
   end
 
   def assert_not(arg)
-    p arg != true
+     arg != true
   end
 end

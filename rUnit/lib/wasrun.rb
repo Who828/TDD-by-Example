@@ -21,6 +21,6 @@ class WasRun < TestCase
   end
 
   def test_broken_method
-    raise Exception
+    raise 
   end
 end
