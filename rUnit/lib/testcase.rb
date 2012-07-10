@@ -5,6 +5,7 @@ class TestCase
   end
 
   def run
+    setup
     method = self.send(name)
     method
   end
