@@ -1,9 +1,11 @@
+require_relative 'testresult'
+
 class TestCase  
   attr_reader :name
   def initialize(name)
     @name = name
   end
-  
+
   def setup
   end
 
@@ -11,9 +13,16 @@ class TestCase
   end
 
   def run()
+    result = TestResult.new
+    result.test_started
     setup
-    self.send(name)
+    begin
+      self.send(name)
+    rescue Exception
+      result.test_failed
+    end
     tear_down
+    result
   end
 
   def assert(arg)

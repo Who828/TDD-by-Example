@@ -19,4 +19,8 @@ class WasRun < TestCase
   def setup
     @log = "setup "
   end
+
+  def test_broken_method
+    raise Exception
+  end
 end
