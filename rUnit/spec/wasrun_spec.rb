@@ -2,20 +2,11 @@ require_relative '../lib/wasrun'
 
 class TestCaseTest < TestCase
 
-  def setup
-    @test = WasRun.new("test_method")
-  end
-
-  def test_running
+  def test_template_method
+    @test = WasRun.new('test_method')
     @test.run
-    assert(@test.was_run)
-  end
-
-  def test_setup
-    @test.run
-    assert(@test.was_setup)
+    assert('setup test_method teardown ' == @test.log)
   end
 end
 
-TestCaseTest.new("test_running").run
-TestCaseTest.new("test_setup").run
+TestCaseTest.new("test_template_method").run

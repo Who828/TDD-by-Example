@@ -3,26 +3,24 @@ class TestCase
   def initialize(name)
     @name = name
   end
+  
+  def setup
+  end
 
-  def run
+  def tear_down
+  end
+
+  def run()
     setup
-    method = self.send(name)
-    method
+    self.send(name)
+    tear_down
   end
 
   def assert(arg)
-     if arg
-       p true
-     else
-       p false
-     end
+    p arg == true
   end
 
   def assert_not(arg)
-    if !arg
-      p true
-    else
-      p false
-    end
+    p arg != true
   end
 end

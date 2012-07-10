@@ -1,19 +1,22 @@
 require_relative 'testcase'
 
 class WasRun < TestCase
-  attr_reader :was_run,:was_setup
+  attr_reader :was_run,:was_setup,:log
 
   def initialize(name)
     @was_run = false
     super(name)
   end
 
+  def tear_down
+    @log = @log + "teardown "
+  end
+
   def test_method
-    @was_run = true
+    @log = @log+"test_method "
   end
 
   def setup
-    @was_run = false
-    @was_setup = true
+    @log = "setup "
   end
 end
