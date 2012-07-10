@@ -1,4 +1,5 @@
 require 'pair'
+require 'money'
 
 class Bank
   attr_reader :rates

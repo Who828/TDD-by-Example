@@ -1,5 +1,4 @@
 require 'bank'
-require 'sum'
 
 class Money
   attr_reader :amount,:currency
